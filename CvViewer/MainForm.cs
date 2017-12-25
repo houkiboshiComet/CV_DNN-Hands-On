@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace OpenCVApp
 {
@@ -105,8 +106,9 @@ namespace OpenCVApp
            
             effectBox.Items.AddRange(ImagingWrapper.getEffectNames());
             effectBox.SelectedIndex = 0;
-            comboBox_ForMinNeighbors.Text = DEFAULT_MIN_NEIGHBORS.ToString(); 
-        }
+            comboBox_ForMinNeighbors.Text = DEFAULT_MIN_NEIGHBORS.ToString();
+			setDefaultGraph();
+		}
 
         private void effectBox_TextChanged(object sender, EventArgs e)
         {
@@ -180,6 +182,58 @@ namespace OpenCVApp
             }
         }
 
+		private void button_ForClassifyImage_Click(object sender, EventArgs e)
+		{
+			
+			
+		}
 
-    }
+		private void setClassifiedProbabilities(List<KeyValuePair<string, double>> classifiedProbabilities, int maxViewNum )
+		{
+			Series series = new Series();
+			double otherProbabilities = 0.0;
+
+			for (int i = 0; i < Math.Min(classifiedProbabilities.Count, maxViewNum); i++)
+			{
+				double targetProbabilities = classifiedProbabilities[i].Value;
+				DataPoint dataPoint = new DataPoint(0, targetProbabilities);
+				targetProbabilities -= targetProbabilities;
+				dataPoint.Label = classifiedProbabilities[i].Key;
+				series.Points.Add(dataPoint);
+			}
+			if (otherProbabilities > 0.0) {
+				DataPoint dataPoint = new DataPoint(0, otherProbabilities);
+				dataPoint.Label = "Others";
+				series.Points.Add(dataPoint);
+			}
+		}
+
+		private void setDefaultGraph()
+		{
+			Series series = new Series();
+			{
+				DataPoint dataPoint = new DataPoint(0, 100);
+				dataPoint.Label = "Object1";
+				series.Points.Add(dataPoint);
+			}
+			{
+				DataPoint dataPoint = new DataPoint(0, 50);
+				dataPoint.Label = "Object2";
+				series.Points.Add(dataPoint);
+			}
+			{
+				DataPoint dataPoint = new DataPoint(0, 30);
+				dataPoint.Label = "Object3";
+				series.Points.Add(dataPoint);
+			}
+			{
+				DataPoint dataPoint = new DataPoint(0, 10);
+				dataPoint.Label = "Others";
+				series.Points.Add(dataPoint);
+			}
+			series.ChartType = SeriesChartType.Doughnut;
+			chart_ForClassifiedField.Series.Clear();
+			chart_ForClassifiedField.Series.Add(series);
+		}
+	}
 }

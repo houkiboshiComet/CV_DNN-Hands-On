@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CvControlException.h" />
+    <ClInclude Include="DNNProcessor.h" />
     <ClInclude Include="ImageController.h" />
     <ClInclude Include="ImageProcessor.h" />
     <ClInclude Include="ImagingException.h" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CvControlException.cpp" />
+    <ClCompile Include="DNNProcessor.cpp" />
     <ClCompile Include="ImageController.cpp" />
     <ClCompile Include="ImageProcessor.cpp" />
     <ClCompile Include="ImagingException.cpp" />

@@ -35,6 +35,9 @@
     <ClCompile Include="CvControlException.cpp">
       <Filter>Error Handling</Filter>
     </ClCompile>
+    <ClCompile Include="DNNProcessor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Properties.h">
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="CvControlException.h">
       <Filter>Error Handling</Filter>
+    </ClInclude>
+    <ClInclude Include="DNNProcessor.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -147,6 +147,15 @@ namespace OpenCVApp {
 		catch (CvControlException e) {
 			throw gcnew ImagingException(gcnew String(e.what()));
 		}
-
 	}
+
+	List< KeyValuePair<String^, int>>^ ImagingWrapper::classifyObject() {
+		try {
+			return gcnew List< KeyValuePair<String^, int>>();
+		}
+		catch (CvControlException e) {
+			throw gcnew ImagingException(gcnew String(e.what()));
+		}
+	}
+
 }

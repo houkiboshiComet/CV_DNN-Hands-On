@@ -3,6 +3,7 @@
 #pragma once
 
 using namespace System;
+using namespace System::Collections::Generic;
 
 #include <string>
 
@@ -31,6 +32,8 @@ namespace OpenCVApp {
 		static int CENTRAL_SETTING_VALUE();
 		void updateEffect(String^ name, setting_t setting);
 		void detectObject(setting_t setting, int minNeighbors);
+
+		List< KeyValuePair<String^, int>>^ classifyObject();
 
 		ImagingWrapper();
 		~ImagingWrapper();
