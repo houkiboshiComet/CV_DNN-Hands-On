@@ -6,9 +6,11 @@ namespace OpenCVApp {
 	
 	GoogLeNetClassifier::GoogLeNetClassifier()
 	{
+		/* do nothing */
 	}
 	GoogLeNetClassifier::~GoogLeNetClassifier()
 	{
+		/* do nothing */
 	}
 	void GoogLeNetClassifier::createNeuralNet() {
 		

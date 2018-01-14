@@ -14,9 +14,13 @@ namespace OpenCVApp {
 		IClassifier();
 		virtual ~IClassifier();
 		virtual void createNeuralNet() = 0;
-		virtual void applyNeuralNet(const cv::Mat* image, cv::Mat* output) = 0;
-		static void getMaxClass(const cv::Mat* probBlob, int *classId, double *classProb);
-		static std::vector<std::string> readClassNames(const char *filename);
+		virtual void setImage(const cv::Mat* image) = 0;
+		virtual void classify(cv::Mat* probabilities) = 0;
+		
+		void outLayerAsImage(const std::string& layer, const std::string& nameHead, const std::string& extension, int number = 0);
+		
+		static void getMaxClass(const cv::Mat* probabilities, int *classId, double *classProb);
+		static std::vector<std::string> readClassNames(const std::string& filename);
 
 	protected:
 		cv::dnn::Net net;

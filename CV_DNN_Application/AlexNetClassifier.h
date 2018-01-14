@@ -7,6 +7,7 @@ namespace OpenCVApp {
 		AlexNetClassifier();
 		~AlexNetClassifier();
 		void createNeuralNet();
-		void applyNeuralNet(const cv::Mat* image, cv::Mat* output);
+		void setImage(const cv::Mat* image);
+		void classify(cv::Mat* probabilities);
 	};
 }
