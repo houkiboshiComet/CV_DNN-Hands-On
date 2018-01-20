@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="AlexNetClassifier.cpp" />
-    <ClCompile Include="IClassifier.cpp" />
     <ClCompile Include="GoogLeNetClassifier.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UserCommunicator.cpp">
@@ -11,10 +10,10 @@
     <ClCompile Include="Paths.cpp">
       <Filter>utility</Filter>
     </ClCompile>
+    <ClCompile Include="ClassifierBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlexNetClassifier.h" />
-    <ClInclude Include="IClassifier.h" />
     <ClInclude Include="GoogLeNetClassifier.h" />
     <ClInclude Include="UserCommunicator.h">
       <Filter>utility</Filter>
@@ -22,6 +21,7 @@
     <ClInclude Include="Paths.h">
       <Filter>utility</Filter>
     </ClInclude>
+    <ClInclude Include="ClassifierBase.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="utility">

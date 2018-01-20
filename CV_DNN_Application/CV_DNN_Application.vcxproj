@@ -93,14 +93,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlexNetClassifier.h" />
-    <ClInclude Include="IClassifier.h" />
+    <ClInclude Include="ClassifierBase.h" />
     <ClInclude Include="GoogLeNetClassifier.h" />
     <ClInclude Include="Paths.h" />
     <ClInclude Include="UserCommunicator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlexNetClassifier.cpp" />
-    <ClCompile Include="IClassifier.cpp" />
+    <ClCompile Include="ClassifierBase.cpp" />
     <ClCompile Include="GoogLeNetClassifier.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Paths.cpp" />

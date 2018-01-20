@@ -6,16 +6,18 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 
-#include "IClassifier.h"
+#include "ClassifierBase.h"
 
 namespace OpenCVApp {
 
-	class GoogLeNetClassifier : public IClassifier {
+	class GoogLeNetClassifier : public ClassifierBase {
+
 	public:
 		GoogLeNetClassifier();
 		~GoogLeNetClassifier();
 		void createNeuralNet();
-		void applyNeuralNet(const cv::Mat* image, cv::Mat* output);
+		void setImage(const cv::Mat* image);
+		void classify(cv::Mat* probabilities);
 	};
 
 }

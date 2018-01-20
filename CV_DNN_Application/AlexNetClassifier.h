@@ -1,8 +1,8 @@
 #pragma once
-#include "IClassifier.h"
+#include "ClassifierBase.h"
 
 namespace OpenCVApp {
-	class AlexNetClassifier : public IClassifier {
+	class AlexNetClassifier : public ClassifierBase {
 	public:
 		AlexNetClassifier();
 		~AlexNetClassifier();
