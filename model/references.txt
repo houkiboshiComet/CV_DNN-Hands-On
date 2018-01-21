@@ -1,0 +1,5 @@
+[pretrained models]
+https://github.com/BVLC/caffe/tree/master/models
+
+[class label]
+https://raw.githubusercontent.com/ludv1x/opencv_contrib/master/modules/dnn/samples/synset_words.txt
