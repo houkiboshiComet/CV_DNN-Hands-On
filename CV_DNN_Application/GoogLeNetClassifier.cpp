@@ -15,15 +15,15 @@ namespace OpenCVApp {
 
 	/* 1. ニューラルネットワークを形成する。 */
 	void GoogLeNetClassifier::createNeuralNet() {
-		/* FIX ME */
+		/* IMPLEMENTS ME */
 	}
 
 	/* 2. 入力層に画像をセットする。 */
 	void GoogLeNetClassifier::setImage(const cv::Mat* image) {
-		/* FIX ME */
+		/* IMPLEMENTS ME */
 	}
-	/* 3. 画像分類を行う。( = 出力層まで順伝播させる。) */
+	/* 3. 出力層まで順伝播させる。( = 画像分類を行う。) */
 	void GoogLeNetClassifier::classify(cv::Mat* probabilities) {
-		/* FIX ME */
+		/* IMPLEMENTS ME */
 	}
 }

@@ -26,8 +26,7 @@ namespace OpenCVApp {
 	}
 
 	void UserCommunicator::showClassifiedResult(const cv::Mat* probatilies, const std::string& labelTxt, int showClassCount) {
-		
-		
+			
 		std::vector<int> rankHigerClassIds;
 		std::vector<float> rankHigerClassProbs;
 

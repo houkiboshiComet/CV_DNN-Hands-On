@@ -27,5 +27,9 @@ namespace OpenCVApp {
 
 	protected:
 		cv::dnn::Net net;
+		static const int IMAGENET_MEAN_R = 123; 
+		static const int IMAGENET_MEAN_G = 117; 
+		static const int IMAGENET_MEAN_B = 104;
+
 	};
 }
