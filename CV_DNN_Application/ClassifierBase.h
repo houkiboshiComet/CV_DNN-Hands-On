@@ -18,8 +18,9 @@ namespace OpenCVApp {
 		virtual void setImage(const cv::Mat* image) = 0;
 		virtual void classify(cv::Mat* probabilities) = 0;
 		
-		void outLayerAsImage(const std::string& layer, const std::string& nameHead, const std::string& extension, int number = 0);
-		void outLayerAsCsv(const std::string& layer, const std::string& nameHead, int number = 0);
+		
+		void outLayerAsImage(const std::string& layer);
+		void outLayerAsCsv(const std::string& layer);
 
 		static void getMaxClass(const cv::Mat* probabilities, int *topClass, double *topProb);
 		static void getRankHigherClasses(const cv::Mat* probabilities, std::vector<int> *higherClass, std::vector<float> *higherProbs, int rankCount);
@@ -31,5 +32,7 @@ namespace OpenCVApp {
 		static const int IMAGENET_MEAN_G = 117; 
 		static const int IMAGENET_MEAN_B = 104;
 
+		void outLayerAsImage(const std::string& layer, const std::string& nameHead, const std::string& extension);
+		void outLayerAsCsv(const std::string& layer, const std::string& nameHead);
 	};
 }

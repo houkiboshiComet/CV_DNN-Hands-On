@@ -4,6 +4,7 @@
 #include<iostream>
 #include<fstream>
 #include <math.h>
+#include "Paths.h"
 
 namespace OpenCVApp {
 
@@ -16,16 +17,36 @@ namespace OpenCVApp {
 	{
 		/* do nothing */
 	}
-	
-	void ClassifierBase::outLayerAsImage(const std::string& layer, const std::string& nameHead, const std::string& extension, int number) {
+
+	void ClassifierBase::outLayerAsImage(const std::string& layer) {
+		const std::string outDir = "..\\layers\\";
+		Paths::createDirAsNecessary(outDir);
+
+		outLayerAsImage(layer, outDir + layer + "_", ".png");
+	}
+	void ClassifierBase::outLayerAsCsv(const std::string& layer) {
+		const std::string outDir = "..\\layers\\";
+		Paths::createDirAsNecessary(outDir);
+
+		outLayerAsCsv(layer, outDir + layer);
+	}
+	void ClassifierBase::outLayerAsImage(const std::string& layer, const std::string& nameHead, const std::string& extension) {
 		cv::Mat blob = net.forward(layer);
-		int channels = blob.size[1];
-		int rows = blob.size[2];
-		int cols = blob.size[3];
+		int channels = 1, rows = 1, cols = 1;
+		if (blob.dims >= 1) {
+			cols = blob.size[blob.dims - 1];
+		}
+		if (blob.dims >= 2) {
+			rows = blob.size[blob.dims - 2];
+		}
+		if (blob.dims >= 3) {
+			channels = blob.size[blob.dims - 3];
+		}
+
 		char numstr[5] = {};
 
 		int imageSize = rows * cols;
-		float* headPtr = (float*)blob.ptr<float>() + channels * imageSize * number;
+		float* headPtr = (float*)blob.ptr<float>() + channels;
 
 		for (int i = 0; i < channels; i++) {
 			cv::Mat out = cv::Mat(rows, cols, CV_32F,
@@ -35,23 +56,29 @@ namespace OpenCVApp {
 			cv::imwrite(nameHead + std::string(numstr) + extension, out);
 		}
 	}
-	void ClassifierBase::outLayerAsCsv(const std::string& layer, const std::string& nameHead, int number ) {
+	void ClassifierBase::outLayerAsCsv(const std::string& layer, const std::string& nameHead) {
 		cv::Mat blob = net.forward(layer);
-		int channels = blob.size[1];
-		int rows = blob.size[2];
-		int cols = blob.size[3];
-		char numstr[5] = {};
+		int channels = 1, rows = 1, cols = 1;
+		if (blob.dims >= 1) {
+			cols = blob.size[blob.dims - 1];
+		}
+		if (blob.dims >= 2) {
+			rows = blob.size[blob.dims - 2];
+		}
+		if (blob.dims >= 3) {
+			channels = blob.size[blob.dims - 3];
+		}
 
 		int imageSize = rows * cols;
 
 		std::ofstream csv(nameHead + ".csv");
-		float* headPtr = (float*)blob.ptr<float>() + channels * imageSize * number;
+		float* headPtr = (float*)blob.ptr<float>() + channels;
 
 		for (int c = 0; c < channels; c++) {
 			csv << "channel" << c << "\n";
-			for (int x = 0; x < rows; x++) {
-				for (int y = 0; y < rows; y++) {
-					csv << headPtr[c * imageSize + x * rows + y] << ",";
+			for (int y = 0; y < rows; y++) {
+				for (int x = 0; x < cols; x++) {
+					csv << headPtr[c * imageSize + y * cols + x] << ",";
 				}
 				csv << "\n";
 			}
