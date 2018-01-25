@@ -34,7 +34,7 @@ namespace OpenCVApp {
 
 		std::vector<std::string> classNames = ClassifierBase::readClassNames(labelTxt);
 
-		showClassCount = min(showClassCount, rankHigerClassIds.size());
+		showClassCount = min(showClassCount, (int) rankHigerClassIds.size());
 
 		std::cout << showClassCount << " Best Classified Classes" << std::endl;
 
