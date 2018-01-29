@@ -46,7 +46,7 @@ namespace OpenCVApp {
 		char numstr[5] = {};
 
 		int imageSize = rows * cols;
-		float* headPtr = (float*)blob.ptr<float>() + channels;
+		float* headPtr = (float*)blob.ptr<float>();
 
 		for (int i = 0; i < channels; i++) {
 			cv::Mat out = cv::Mat(rows, cols, CV_32F,
@@ -72,7 +72,7 @@ namespace OpenCVApp {
 		int imageSize = rows * cols;
 
 		std::ofstream csv(nameHead + ".csv");
-		float* headPtr = (float*)blob.ptr<float>() + channels;
+		float* headPtr = (float*)blob.ptr<float>();
 
 		for (int c = 0; c < channels; c++) {
 			csv << "channel" << c << "\n";
